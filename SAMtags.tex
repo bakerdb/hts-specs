@@ -81,14 +81,14 @@ or
   {\tt MC} & Z & CIGAR string for mate/next segment \\
   {\tt MD} & Z & String for mismatching positions \\
   {\tt MF} & ? & Reserved for backwards compatibility reasons \\
-  {\tt MI} & Z & Molecular-barcode sequence or identifier \\
+  {\tt MI} & Z & Molecular identifier; a string that uniquely identifies the molecule from which the record was derived \\
   {\tt MQ} & i & Mapping quality of the mate/next segment \\
   {\tt NH} & i & Number of reported alignments that contains the query in the current record \\
   {\tt NM} & i & Edit distance to the reference \\
   {\tt OC} & Z & Original CIGAR \\
   {\tt OP} & i & Original mapping position \\
   {\tt OQ} & Z & Original base quality \\
-  {\tt OX} & Z & Raw (uncorrected) unique molecular barcode bases \\
+  {\tt OX} & Z & Original unique molecular barcode bases \\
   {\tt PG} & Z & Program \\
   {\tt PQ} & i & Phred likelihood of the template \\
   {\tt PT} & Z & Read annotations for parts of the padded read sequence \\
@@ -99,7 +99,7 @@ or
   {\tt R2} & Z & Sequence of the mate/next segment in the template \\
   {\tt RG} & Z & Read group \\
   {\tt RT} & Z & Barcode sequence (deprecated; use {\tt BC} instead) \\
-  {\tt RX} & Z & Sequence bases of the unique molecular identifier \\
+  {\tt RX} & Z & Sequence bases of the (possibly corrected) unique molecular identifier \\
   {\tt SA} & Z & Other canonical alignments in a chimeric alignment \\
   {\tt SM} & i & Template-independent mapping quality \\
   {\tt SQ} & ? & Reserved for backwards compatibility reasons \\
@@ -253,7 +253,7 @@ In the case of multiple unique molecular identifiers (e.g., one on each end of t
 \item[RX:Z:\tagvalue{sequence+}]
 Sequence bases from the unique molecular identifier. 
 These could be either corrected or uncorrected. Unlike {\tt MI}, the value may be non-unique in the file. 
-Should comprise of a sequence of bases. 
+Should be comprised of a sequence of bases. 
 In the case of multiple unique molecular identifiers (e.g., one on each end of the template) the recommended implementation concatenates all the barcodes with a hyphen (`{\tt -}') between the different barcodes.
 
 If the bases represent corrected bases, the original sequence can be stored in {\tt OX} (similar to {\tt OQ} storing the original qualities of bases.)
